@@ -1,28 +1,19 @@
 # This Python file uses the following encoding: utf-8
+
+#from PyQt5.QtWidgets import QMainWindow
 import sys
-import os
+from PyQt5 import QtWidgets
 
+from PyQt5.QtWidgets import QMessageBox
+import form
 
-from PySide2.QtWidgets import QApplication, QWidget
-from PySide2.QtCore import QFile
-from PySide2.QtUiTools import QUiLoader
-
-
-class main(QWidget):
+class Autz(QtWidgets.QMainWindow, form.Ui_main):
     def __init__(self):
-        super(main, self).__init__()
-        self.load_ui()
-
-    def load_ui(self):
-        loader = QUiLoader()
-        path = os.path.join(os.path.dirname(__file__), "form.ui")
-        ui_file = QFile(path)
-        ui_file.open(QFile.ReadOnly)
-        loader.load(ui_file, self)
-        ui_file.close()
+        super(Autz, self).__init__()
+        self.setupUi(self)
 
 if __name__ == "__main__":
-    app = QApplication([])
-    widget = main()
+    app = QtWidgets.QApplication([])
+    widget = Autz()
     widget.show()
     sys.exit(app.exec_())
